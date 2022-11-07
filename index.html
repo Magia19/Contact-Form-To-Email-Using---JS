@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form To Email Using - JS</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>Get IN Touch</h3>
+            <input type="text" id="name" placeholder="Teu Nome" required>
+            <input type="email" id="email" placeholder="Teu Email" required>
+            <input type="text" id="phone" placeholder="Teu Numero" required>
+            <textarea  id="message" cols="4" placeholder="Como posso ajudar-te"></textarea>
+            <button type="submit">send</button>
+        </form>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+            Host : "smtp.gmail.com",
+            Username : "eunada19@gmail.com",
+            Password : "4444444T",
+            To : 'martinhotadilson1996@gmail.com',
+            From : document.getElementById("email").value,
+            Subject : "New  Contact Form Enquiry",
+            Body : "Nome: " + document.getElementById("name").value
+                +"<br> email: " + document.getElementById("email").value
+                +"<br> phone no.: " + document.getElementById("phone").value
+                +"<br> Message: " + document.getElementById("message").value 
+            }).then(
+            message => alert("Message Send SucesFully")
+            );
+        }
+    </script>
+</body>
+</html>
